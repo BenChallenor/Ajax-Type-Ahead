@@ -14,5 +14,18 @@ function findMatches(wordToMatch, cities) {
     // global and anycase search
     return place.city.match(regex) || place.state.match(regex)
     // checks for if either the place or state contain the letters
-  })
+  });
 }
+
+function displayMatches() {
+  console.log(this.value);
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+// target html classes
+
+searchInput.addEventListener('change', displayMatches);
+// listens to the change event, when input changes runs displayMatches
+searchInput.addEventListener('keyup', displayMatches);
+// keyup - displayMatches when keys presses
