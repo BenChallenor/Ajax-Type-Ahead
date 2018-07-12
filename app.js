@@ -6,7 +6,7 @@ fetch(endpoint)
   .then(blob => blob.json())
   // converts data to a json file
   .then(data => cities.push(...data))
-  // spreads in to the array individual cities
+// spreads in to the array individual cities
 
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
@@ -18,7 +18,19 @@ function findMatches(wordToMatch, cities) {
 }
 
 function displayMatches() {
-  console.log(this.value);
+  const matchArray = findMatches(this.value, cities);
+  // creates array of displayMatches
+  const html = matchArray.map(place => {
+    // loops over array, backtick holds list item
+    return `
+  <li>
+  <span class="name">${place.city}, ${place.state}</span>
+  <span class="population">${place.population}</span>
+  </li>
+`;
+}).join('');
+// turns array in to one string
+  suggestions.innerHTML = html;
 }
 
 const searchInput = document.querySelector('.search');
